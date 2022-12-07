@@ -16,6 +16,8 @@
 #include <unistd.h>
 #include <iconv.h>
 #include <ctype.h>
+#include <pthread.h>
+
 
 // 初始化用于监听的套接字
 // port:端口号5000-65535
@@ -58,3 +60,10 @@ int sendDir(const char *dirName,int cfd);
 // 将浏览器发来的url中的中文16进制乱码转位服务器可以理解的utf-8
 // 将src-->dst
 void hexToUtf8(char *src_str,char *dst_str);
+
+
+// 创建一个线程处理任务以及善后工作
+int initPthreadWork(int cfd,int epoll_fd);
+
+// 多线程专属
+void *recvHttpRequestByPthread(void * arg);

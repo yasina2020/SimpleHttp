@@ -69,11 +69,13 @@ int epollRun(int lfd){
             if(cfd == lfd){
                 // 建立新连接 accept
                 acceptClient(lfd,epoll_fd);
-                printf("连接已建立%d\n",cfd);
             }else{
                 // 通信，主要是读对端的数据
-                printf("接收到请求%d\n",cfd);
-                recvHttpRequest(cfd,epoll_fd);
+                // recvHttpRequest(cfd,epoll_fd);
+
+                // 改进12.6 使用多线程处理业务
+                printf("epollRun,cfd:%d,epoll_fd:%d\n",cfd,epoll_fd);
+                initPthreadWork(cfd,epoll_fd);
             }
         }
     }
@@ -264,8 +266,8 @@ const char* getFileType(const char* name){
     if(strcmp(dot,".html")==0 || strcmp(dot,".htm")==0){
         return "text/html; charset=utf-8";
     }
-    if(strcmp(dot,".html")==0 || strcmp(dot,".htm")==0){
-        return "text/html; charset=utf-8";
+    if(strcmp(dot,".txt")==0 ){
+        return "text/plain; charset=utf-8";
     }
     if(strcmp(dot,".jpg")==0 || strcmp(dot,".jpeg")==0){
         return "image/jpeg";
@@ -273,18 +275,30 @@ const char* getFileType(const char* name){
     if(strcmp(dot,".png")==0){
         return "image/png";
     }
+    if(strcmp(dot,".gif")==0){
+        return "image/gif";
+    }
     if(strcmp(dot,".mkv")==0){
         return "video/x-matroska";
     }
-    
-
+    if(strcmp(dot,".mp4")==0){
+        return "audio/mp4";
+    }
+    if(strcmp(dot,".mp3")==0){
+        return "audio/mp3";
+    }
+    if(strcmp(dot,".csv")==0){
+        return "text/csv";
+    }
+    if(strcmp(dot,".wbmp")==0){
+        return "image/vnd.wap.wbmp";
+    }
     return "text/plain; charset=utf-8";
 
 }
 
 
 // 发送目录
-// #define __USE_XOPEN2K8
 int sendDir(const char *dirName,int cfd){
     char buf[4096] = {0};
     sprintf(buf,
@@ -345,3 +359,58 @@ void hexToUtf8(char *src,char *dst){
 }
 
 
+struct info{
+    int cfd;
+    int epoll_fd;
+};
+
+int initPthreadWork(int cfd,int epoll_fd){
+    pthread_t tid;
+    printf("initPthreadWork,cfd:%d,epoll_fd:%d\n",cfd,epoll_fd);
+    struct info *in = (struct info*)malloc(sizeof(struct info));
+    in->cfd = cfd;
+    in->epoll_fd = epoll_fd;
+    printf("处理线程tid=%ld的业务\n",tid);
+    pthread_create(&tid,NULL,recvHttpRequestByPthread,(void *)in);
+
+    pthread_detach(tid);
+    return 0;
+}
+
+
+
+void *recvHttpRequestByPthread(void * arg){
+    struct info *in = (struct info*)arg;
+    int cfd = in->cfd;
+    int epoll_fd = in->epoll_fd;
+    // 因为是ET模式，所以要一次性把数据都读完
+    int len = 0,total = 0;
+    char tmp[1024] = {0};//临时接收数据，然后放入buf中
+    char buf[4096] = {0};
+    while((len = recv(cfd,tmp,sizeof(tmp),0)) > 0){
+        if(total + len <sizeof(buf)){
+            memcpy(buf + total,tmp,len);
+        }
+        total +=len;
+    }
+    //判断数据是否被接收完毕
+    /*
+        因为fd是非阻塞的，所以recv在出错和读取完数据时，都会返回-1，
+        要靠errno来区分这两种情况：errno=EAGAIN  缓冲区中的数据被读取完了
+                                 errno=        读取出错
+    */ 
+    if(len == -1 && errno == EAGAIN){
+        // 数据读入完毕，开始解析http
+        char * pt = strstr(buf,"\r\n");
+        int reqLen = pt - buf;
+        buf[reqLen] = '\0';
+        parseRequestLine(buf,cfd);
+    }else if(len == 0){
+        // 客户端断开连接
+        epoll_ctl(epoll_fd,EPOLL_CTL_DEL,cfd,NULL);
+        close(cfd);
+    }else{
+        perror("recv");
+    }
+    free(in);
+}
