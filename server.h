@@ -17,6 +17,15 @@
 #include <iconv.h>
 #include <ctype.h>
 #include <pthread.h>
+#include "threadPool.h"
+
+
+// 为了实现多线程中函数调用参数的传递创造的结构体
+struct info{
+    int cfd;
+    int epoll_fd;
+};
+
 
 
 // 初始化用于监听的套接字
@@ -27,7 +36,7 @@ int initListenFd(unsigned short port);
 // 启动epoll模型处理业务
 // lfd:监听socket_fd
 // return：
-int epollRun(int lfd);
+int epollRun(int lfd,ThreadPool* pool);
 
 // 从lfd中接收cfd，再将cfd加入到epoll检测中
 int acceptClient(int lfd,int epoll_fd);
@@ -67,3 +76,7 @@ int initPthreadWork(int cfd,int epoll_fd);
 
 // 多线程专属
 void *recvHttpRequestByPthread(void * arg);
+
+// 使用线程池处理业务,这个函数负责将东西放进线程池
+int putRequest2Pool(int cfd,int epoll_fd,ThreadPool* pool);
+void recvHttpRequestByPool(void * arg);

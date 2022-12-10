@@ -1,0 +1,608 @@
+memset(pool->threadIDs,0,sizeof(pthread_t)*max);
+任务队列的初始化
+ThreadPool* pool 创建成功
+pool size is 8
+1111
+num = 0
+1111
+num = 1
+1111
+num = 2
+1111
+num = 3
+1111
+num = 4
+1111
+num = 5
+1111
+num = 6
+1111
+num = 7
+1111
+num = 8
+1111
+num = 9
+1111
+num = 10
+1111
+num = 11
+1111
+num = 12
+1111
+num = 13
+1111
+num = 14
+1111
+num = 15
+1111
+num = 16
+1111
+num = 17
+1111
+num = 18
+1111
+num = 19
+1111
+num = 20
+1111
+num = 21
+1111
+num = 22
+1111
+num = 23
+1111
+num = 24
+1111
+num = 25
+Number is 23  and thread ID is 140673940936256
+Number is 26  and thread ID is 140673932543552
+1111
+num = 26
+1111
+num = 27
+1111
+num = 28
+1111
+num = 29
+1111
+num = 30
+1111
+num = 31
+1111
+num = 32
+1111
+num = 33
+1111
+num = 34
+1111
+num = 35
+1111
+num = 36
+1111
+num = 37
+1111
+num = 38
+1111
+num = 39
+1111
+num = 40
+1111
+num = 41
+1111
+num = 42
+1111
+num = 43
+1111
+num = 44
+1111
+num = 45
+1111
+num = 46
+1111
+num = 47
+1111
+num = 48
+1111
+num = 49
+1111
+num = 50
+1111
+num = 51
+1111
+num = 52
+1111
+num = 53
+1111
+num = 54
+1111
+num = 55
+1111
+num = 56
+1111
+num = 57
+1111
+num = 58
+1111
+num = 59
+1111
+num = 60
+1111
+num = 61
+1111
+num = 62
+1111
+num = 63
+1111
+num = 64
+1111
+num = 65
+1111
+num = 66
+1111
+num = 67
+1111
+num = 68
+1111
+num = 69
+1111
+num = 70
+1111
+num = 71
+1111
+num = 72
+1111
+num = 73
+1111
+num = 74
+1111
+num = 75
+1111
+num = 76
+1111
+num = 77
+1111
+num = 78
+1111
+num = 79
+1111
+num = 80
+1111
+num = 81
+1111
+num = 82
+1111
+num = 83
+1111
+num = 84
+1111
+num = 85
+1111
+num = 86
+1111
+num = 87
+1111
+num = 88
+1111
+num = 89
+1111
+num = 90
+1111
+num = 91
+1111
+num = 92
+1111
+num = 93
+1111
+num = 94
+1111
+num = 95
+1111
+num = 96
+1111
+num = 97
+1111
+num = 98
+1111
+num = 99
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+Number is 100  and thread ID is 140673932543552
+Number is 100  and thread ID is 140673940936256
+memset(pool->threadIDs,0,sizeof(pthread_t)*max);
+任务队列的初始化
+ThreadPool* pool 创建成功
+pool size is 8
+1111
+num = 0
+1111
+num = 1
+1111
+num = 2
+1111
+num = 3
+1111
+num = 4
+1111
+num = 5
+1111
+num = 6
+1111
+num = 7
+1111
+num = 8
+1111
+num = 9
+Number is 9  and thread ID is 140340058142272
+1111
+num = 10
+1111
+num = 11
+1111
+num = 12
+1111
+num = 13
+1111
+num = 14
+1111
+num = 15
+1111
+num = 16
+1111
+num = 17
+1111
+num = 18
+1111
+num = 19
+1111
+num = 20
+1111
+num = 21
+1111
+num = 22
+1111
+num = 23
+1111
+num = 24
+Number is 22  and thread ID is 140340049749568
+1111
+num = 25
+1111
+num = 26
+1111
+num = 27
+1111
+num = 28
+1111
+num = 29
+1111
+num = 30
+1111
+num = 31
+1111
+num = 32
+1111
+num = 33
+1111
+num = 34
+1111
+num = 35
+1111
+num = 36
+1111
+num = 37
+1111
+num = 38
+1111
+num = 39
+1111
+num = 40
+1111
+num = 41
+1111
+num = 42
+1111
+num = 43
+1111
+num = 44
+1111
+num = 45
+1111
+num = 46
+1111
+num = 47
+1111
+num = 48
+1111
+num = 49
+1111
+num = 50
+1111
+num = 51
+1111
+num = 52
+1111
+num = 53
+1111
+num = 54
+1111
+num = 55
+1111
+num = 56
+1111
+num = 57
+1111
+num = 58
+1111
+num = 59
+1111
+num = 60
+1111
+num = 61
+1111
+num = 62
+1111
+num = 63
+1111
+num = 64
+1111
+num = 65
+1111
+num = 66
+1111
+num = 67
+1111
+num = 68
+1111
+num = 69
+1111
+num = 70
+1111
+num = 71
+1111
+num = 72
+1111
+num = 73
+1111
+num = 74
+1111
+num = 75
+1111
+num = 76
+1111
+num = 77
+1111
+num = 78
+1111
+num = 79
+1111
+num = 80
+1111
+num = 81
+1111
+num = 82
+1111
+num = 83
+1111
+num = 84
+1111
+num = 85
+1111
+num = 86
+1111
+num = 87
+1111
+num = 88
+1111
+num = 89
+1111
+num = 90
+1111
+num = 91
+1111
+num = 92
+1111
+num = 93
+1111
+num = 94
+1111
+num = 95
+1111
+num = 96
+1111
+num = 97
+1111
+num = 98
+1111
+num = 99
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140339918657088
+Number is 100  and thread ID is 140339910264384
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140339918657088
+Number is 100  and thread ID is 140339910264384
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140339918657088
+Number is 100  and thread ID is 140339910264384
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140340058142272
+Number is 100  and thread ID is 140339918657088
+Number is 100  and thread ID is 140339910264384
+Number is 100  and thread ID is 140340032964160
+Number is 100  and thread ID is 140339927049792
+Number is 100  and thread ID is 140340049749568
+Number is 100  and thread ID is 140340024571456
+Number is 100  and thread ID is 140340041356864
+Number is 100  and thread ID is 140340016178752
+Number is 100  and thread ID is 140339935442496
+Number is 100  and thread ID is 140340058142272

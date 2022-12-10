@@ -41,7 +41,7 @@ int initListenFd(unsigned short port){
 }
 
 
-int epollRun(int lfd){
+int epollRun(int lfd,ThreadPool* pool){
 
     // 创建rpoll实例
     int epoll_fd = epoll_create(1);
@@ -74,8 +74,11 @@ int epollRun(int lfd){
                 // recvHttpRequest(cfd,epoll_fd);
 
                 // 改进12.6 使用多线程处理业务
-                printf("epollRun,cfd:%d,epoll_fd:%d\n",cfd,epoll_fd);
-                initPthreadWork(cfd,epoll_fd);
+                // printf("epollRun,cfd:%d,epoll_fd:%d\n",cfd,epoll_fd);
+                // initPthreadWork(cfd,epoll_fd);
+
+                // 改进12.10 使用线程池处理业务
+                putRequest2Pool(cfd,epoll_fd,pool);
             }
         }
     }
@@ -359,10 +362,6 @@ void hexToUtf8(char *src,char *dst){
 }
 
 
-struct info{
-    int cfd;
-    int epoll_fd;
-};
 
 int initPthreadWork(int cfd,int epoll_fd){
     pthread_t tid;
@@ -413,4 +412,54 @@ void *recvHttpRequestByPthread(void * arg){
         perror("recv");
     }
     free(in);
+}
+
+
+
+void recvHttpRequestByPool(void * arg){
+    struct info *in = (struct info*)arg;
+    int cfd = in->cfd;
+    int epoll_fd = in->epoll_fd;
+    // 因为是ET模式，所以要一次性把数据都读完
+    int len = 0,total = 0;
+    char tmp[1024] = {0};//临时接收数据，然后放入buf中
+    char buf[4096] = {0};
+    while((len = recv(cfd,tmp,sizeof(tmp),0)) > 0){
+        if(total + len <sizeof(buf)){
+            memcpy(buf + total,tmp,len);
+        }
+        total +=len;
+    }
+    //判断数据是否被接收完毕
+    /*
+        因为fd是非阻塞的，所以recv在出错和读取完数据时，都会返回-1，
+        要靠errno来区分这两种情况：errno=EAGAIN  缓冲区中的数据被读取完了
+                                 errno=        读取出错
+    */ 
+    if(len == -1 && errno == EAGAIN){
+        // 数据读入完毕，开始解析http
+        char * pt = strstr(buf,"\r\n");
+        int reqLen = pt - buf;
+        buf[reqLen] = '\0';
+        parseRequestLine(buf,cfd);
+    }else if(len == 0){
+        // 客户端断开连接
+        epoll_ctl(epoll_fd,EPOLL_CTL_DEL,cfd,NULL);
+        close(cfd);
+    }else{
+        perror("recv");
+    }
+    free(in);
+}
+
+int putRequest2Pool(int cfd,int epoll_fd,ThreadPool* pool){
+    struct info *in = (struct info*)malloc(sizeof(struct info));
+    in->cfd = cfd;
+    in->epoll_fd = epoll_fd;
+
+    Task *task = (Task *)malloc(sizeof(Task));
+    task->arg = in;
+    task->function = recvHttpRequestByPool;
+
+    addTask2Pool(task,pool);
 }
